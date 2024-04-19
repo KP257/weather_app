@@ -3,9 +3,9 @@ import 'package:get_it/get_it.dart';
 /// To get an API key, sign up here:
 /// https://home.openweathermap.org/users/sign_up
 ///
+GetIt sl = GetIt.instance;
 
-final sl = GetIt.instance;
 
 void setupInjection() {
-  //TODO setup injection using 'api_key' instance name. Refer to https://pub.dev/packages/get_it for documentation
+  sl.registerSingleton<String>('5bdec13c25b820e7e456c4191f4af978', instanceName: 'api_key');
 }

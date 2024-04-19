@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class WeatherIconImage extends StatelessWidget {
@@ -9,8 +8,8 @@ class WeatherIconImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: iconUrl,
+    return Image.network(
+      iconUrl,
       width: size,
       height: size,
     );
