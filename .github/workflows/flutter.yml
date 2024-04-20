@@ -20,12 +20,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           distribution: 'adopt'
-          java-version: '3.19.5'
+          java-version: '21.0.2'
 
       - name: Flutter Install
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '21.0.2'
+          flutter-version: '3.19.5'
 
       - name: Cache dependencies
         uses: actions/cache@v2
