@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 import 'package:open_weather_example_flutter/src/api/api.dart';
+import 'package:open_weather_example_flutter/src/api/api_keys.dart';
 import 'package:open_weather_example_flutter/src/features/weather/data/api_exception.dart';
 import 'package:open_weather_example_flutter/src/features/weather/data/weather_repository.dart';
 import 'package:open_weather_example_flutter/src/model/forecast/forecast.dart';
@@ -23,12 +24,13 @@ final expectedForecast = Forecast.fromJson(decodedForecastData);
 
 void main() {
   registerFallbackValue(Uri());
+  setupInjection();
   late MockHttpClient mockHttpClient;
   late HttpWeatherRepository mockWeatherRepo;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    final apiKey = OpenWeatherMapAPI('5bdec13c25b820e7e456c4191f4af978');
+    final apiKey = OpenWeatherMapAPI(sl<String>(instanceName: 'api_key'));
     mockWeatherRepo = HttpWeatherRepository(api: apiKey, client: mockHttpClient);
   });
 

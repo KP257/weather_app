@@ -24,7 +24,7 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    final apiKey = OpenWeatherMapAPI('5bdec13c25b820e7e456c4191f4af978');
+    final apiKey = OpenWeatherMapAPI(sl<String>(instanceName: 'api_key'));
     mockWeatherRepo = HttpWeatherRepository(api: apiKey, client: mockHttpClient);
     mockWeatherProvider = WeatherProvider();
   });
@@ -42,7 +42,7 @@ void main() {
 
   });
 
-  test('repository with mocked http client, getWeatherForecastProvider success', () async {
+  test('provider with mocked http client, calculating daily forecast, getWeatherForecastProvider success', () async {
     when(() => mockHttpClient.get(any())).thenAnswer((_) async => http.Response(encodedForecastWeatherJsonResponse, 200));
     final forecastData = await mockWeatherRepo.getWeatherForecast(city: 'Mountain View');
     final forecast = Forecast.fromJson(forecastData);
