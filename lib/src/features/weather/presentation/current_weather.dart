@@ -52,6 +52,7 @@ class CurrentWeatherContents extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
+    // boolean values isCelsius from provider decides to show measurement unit
     final temp = Provider.of<WeatherProvider>(context).isCelsius
         ? weatherData.weatherParams.temp.celsius
         : weatherData.weatherParams.temp.fahrenheit;

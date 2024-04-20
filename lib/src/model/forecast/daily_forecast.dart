@@ -8,21 +8,27 @@ class DailyForecast {
   final String icon;
   final String description;
   final String date;
+  final String city;
+  final int id;
 
   DailyForecast({
     required this.averageTemp,
     required this.icon,
     required this.description,
     required this.date,
+    required this.city,
+    required this.id
   });
 
-  static DailyForecast calculateDailyForecast(List<WeatherListItem> dayData) {
+  static DailyForecast calculateDailyForecast(List<WeatherListItem> dayData, City city) {
     if (dayData.isEmpty) {
       return DailyForecast(
         averageTemp: 0,
-        icon: '',  // Default icon or a placeholder
+        icon: '',
         description: 'No data',
         date: '',
+        city: '',
+        id: 0,
       );
     }
 
@@ -35,12 +41,14 @@ class DailyForecast {
 
     double averageTemp = totalTemp / dayData.length;
 
+
     String formattedDate = DateFormat('EEEE').format(DateTime.parse(dayData.first.date));
 
     return DailyForecast(
         averageTemp: averageTemp,
         icon: representativeWeatherInfo.icon,
         description: representativeWeatherInfo.description,
-        date: formattedDate
+        date: formattedDate, city: city.name,
+      id: city.id
     );
   }}

@@ -22,6 +22,7 @@ class UnknownException implements Exception {
   UnknownException();
 }
 
+// Handlers the returned error message on the ui side
 String getErrorMessage(dynamic e) {
   if (e is InvalidApiKeyException ||
       e is NoInternetConnectionException ||

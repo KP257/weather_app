@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Changed CachedImage to Image.network due to depreciation
 class WeatherIconImage extends StatelessWidget {
   const WeatherIconImage(
       {super.key, required this.iconUrl, required this.size});

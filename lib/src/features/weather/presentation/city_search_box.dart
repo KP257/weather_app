@@ -31,7 +31,6 @@ class _CitySearchRowState extends State<CitySearchBox> {
 
   @override
   Widget build(BuildContext context) {
-
     return Form(
       key: _weatherFormKey,
       autovalidateMode: AutovalidateMode.always,
@@ -54,7 +53,6 @@ class _CitySearchRowState extends State<CitySearchBox> {
                 Icons.search_outlined,
                 color: Theme.of(context).primaryColor,
               ),
-
               onPressed: () async {
                 if (_weatherFormKey.currentState!.validate()) {
                   try {
@@ -94,4 +92,5 @@ class _CitySearchRowState extends State<CitySearchBox> {
       ),
     );
   }
+
 }

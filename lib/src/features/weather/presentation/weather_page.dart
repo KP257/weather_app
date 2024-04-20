@@ -15,7 +15,6 @@ class WeatherPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -36,9 +35,13 @@ class WeatherPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+
                   // Title
                   Text("Weather App", style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
+
                   const CitySearchBox(),
+
+                  // Switch to switch between celsius and fahrenheit
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -51,9 +54,10 @@ class WeatherPage extends StatelessWidget {
                         },
                       ),
                       Text("°C", style: textTheme.bodyMedium),
-
                     ],
                   ),
+
+                  // Current weather and forecast
                   const CurrentWeather(),
                   const WeatherForecast(),
                 ],

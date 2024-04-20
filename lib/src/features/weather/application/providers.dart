@@ -50,7 +50,7 @@ class WeatherProvider extends ChangeNotifier {
     });
 
     for (var i = 0; i < forecast.list.length / 8; i++) {
-      var dailyForecast = DailyForecast.calculateDailyForecast(forecast.list.sublist(i * 8, min((i + 1) * 8, forecast.list.length)));
+      var dailyForecast = DailyForecast.calculateDailyForecast(forecast.list.sublist(i * 8, min((i + 1) * 8, forecast.list.length)), forecast.city);
       dailyForecastList.add(dailyForecast);
     }
   }

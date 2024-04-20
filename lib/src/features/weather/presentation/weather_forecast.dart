@@ -43,6 +43,8 @@ class ForecastWeatherContents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // Checks if the isCelsius in the provider has changed
     final weatherProvider = Provider.of<WeatherProvider>(context);
     final textTheme = Theme.of(context).textTheme;
     final isCelsius = weatherProvider.isCelsius;
@@ -73,8 +75,3 @@ class ForecastWeatherContents extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
