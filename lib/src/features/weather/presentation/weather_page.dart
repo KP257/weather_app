@@ -41,7 +41,7 @@ class WeatherPage extends StatelessWidget {
 
                   const CitySearchBox(),
 
-                  // Switch to switch between celsius and fahrenheit
+                  // switch between celsius and fahrenheit
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -4,7 +4,6 @@ import 'package:open_weather_example_flutter/src/features/weather/presentation/w
 
 void main() {
   testWidgets('WeatherIconImage renders correctly', (WidgetTester tester) async {
-    // Test data
     const String iconUrl = 'https://openweathermap.org/img/wn/04d@2x.png';
     const double size = 50.0;
 

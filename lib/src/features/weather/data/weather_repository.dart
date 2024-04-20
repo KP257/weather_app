@@ -31,7 +31,6 @@ class HttpWeatherRepository {
   async {
     try {
       final response = await http.get(weatherUri);
-
       switch (response.statusCode) {
         case 200:
           return response;
