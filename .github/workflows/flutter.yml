@@ -1,0 +1,54 @@
+name: WEBAPP CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout WeatherApp Code
+        uses: actions/checkout@v2
+
+      - name: JAVA INSTALL
+        uses: actions/setup-java@v1
+        with:
+          distribution: 'adopt'
+          java-version: '3.19.5'
+
+      - name: Flutter Install
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '21.0.2'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: .pub-cache
+          key: ${{ runner.os }}-pub-cache-${{ hashFiles('**/pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-cache-
+
+      - name: Get Packages
+        run: flutter pub get
+
+      - name: Flutter Doctor Check
+        run: flutter doctor -v
+
+      - name: Run Web Tests
+        run: flutter test -j 2 test/src/features/weather/data/weather_repository_test.dart test/src/features/weather/data/provider_test.dart test/src/features/weather/presentation/switch_test.dart test/src/features/weather/presentation/weather_icon_image_test.dart
+        if: matrix.os == 'windows-latest'
+
+      - name: Run Android Tests
+        run: flutter test -j 2 test/src/features/weather/data/weather_repository_test.dart test/src/features/weather/data/provider_test.dart test/src/features/weather/presentation/switch_test.dart test/src/features/weather/presentation/weather_icon_image_test.dart
+        if: matrix.os == 'windows-latest'
+
+      - name: Run iOS Tests
+        run: flutter test -j 2 test/src/features/weather/data/weather_repository_test.dart test/src/features/weather/data/provider_test.dart test/src/features/weather/presentation/switch_test.dart test/src/features/weather/presentation/weather_icon_image_test.dart
+        if: matrix.os == 'macos-latest'
